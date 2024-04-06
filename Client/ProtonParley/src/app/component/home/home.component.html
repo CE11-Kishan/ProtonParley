@@ -1,0 +1,22 @@
+<main>
+    <div class="visuals">
+        <div class="peer">
+            <video #remoteVideo autoplay> </video>
+        </div>
+        <div class="user">
+            <video #localVideo autoplay></video>
+        </div>
+    </div>
+    <div class="active-user-list">
+        <!-- <ol>
+            <li *ngFor="let user of peerService.activePeers">
+                {{ user }}
+            </li>
+        </ol> -->
+
+        <p> {{ msg }} </p>
+        
+        <button [innerText]="btnText" type="button" (click)="onButtonClick()"></button>
+    </div> 
+</main>
+
