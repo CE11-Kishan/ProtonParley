@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class PeerService {
   public peerId: string = '';
   public peer: Peer | undefined;
-  public socketUrl = environment.socketUrl;
+  public socketUrl = environment.baseUrl.replace(/https:/g, 'wss:');
   public activePeers: string[] = [];
   public stream: MediaStream[] = new Array(2);
   public mediaConnection: MediaConnection | undefined;
