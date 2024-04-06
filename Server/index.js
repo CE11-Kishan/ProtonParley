@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 const app = express();
 
 // Serve static files
-app.use(express.static('D:/ProtonParley/Server/wwwroot'));
+app.use(express.static('wwwroot'));
 
 // Enable CORS
 app.use((req, res, next) => {
@@ -68,5 +68,5 @@ app.all('*', function (req, res) {
 // Start the server
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log('Server is listening on port 3000');
+    console.log('Server is listening on port ', PORT);
 });
