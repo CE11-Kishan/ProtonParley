@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.peerService.connectToServer();
-    this.peerService.loadLocalStream();
   }
 
   ngAfterViewInit(){
@@ -33,5 +32,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     if(this.msg === ''){
       this.btnText="Skip"
     }
+  }
+
+  public loadLocalStream(){
+    this.peerService.loadLocalStream();
   }
 }
