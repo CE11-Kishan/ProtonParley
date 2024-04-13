@@ -48,19 +48,16 @@ export class PeerService {
   }
 
   public initiateCall(): string {
-    if (this.activePeers.length > 1) {
+    this.activePeers = this.activePeers.filter(peer => peer !== this.peerId);
+    if (this.activePeers.length > 0) {
       const randomIndex = Math.floor(Math.random() * this.activePeers.length);
       const peerIdToCall = this.activePeers[randomIndex];
-      if (peerIdToCall !== this.peerId) {
-        const call = this.peer?.call(peerIdToCall, this.stream[0]);
-        if (call) {
-          this.mediaConnection = call;
-          call.on('stream', (remoteStream) => {
-            this.remoteVideo.nativeElement.srcObject = remoteStream;
-          });
-        }
-      } else {
-        this.initiateCall();
+      const call = this.peer?.call(peerIdToCall, this.stream[0]);
+      if (call) {
+        this.mediaConnection = call;
+        call.on('stream', (remoteStream) => {
+          this.remoteVideo.nativeElement.srcObject = remoteStream;
+        });
       }
     } else {
       return 'No other active peers available';
