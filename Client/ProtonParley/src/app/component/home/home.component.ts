@@ -12,11 +12,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild('remoteVideo') remoteVideo!: ElementRef<HTMLVideoElement>;
   public btnText = "Start";
   public msg: string = '';
+  public isLive: boolean = false;
+  private connectedToServer: boolean = false;
 
   constructor(public peerService: PeerService){}
 
   ngOnInit(): void {
-    this.peerService.connectToServer();
   }
 
   ngAfterViewInit(){
@@ -27,14 +28,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.peerService.disconnectFromServer();
   }
 
-  public onButtonClick(){
+  public skipToNextUser(){
     this.msg = this.peerService.initiateCall();
-    if(this.msg === ''){
-      this.btnText="Skip"
-    }
   }
 
-  public loadLocalStream(){
-    this.peerService.loadLocalStream();
+  public goLive(){
+    if(!this.connectedToServer) {
+      this.peerService.connectToServer();
+      this.connectedToServer = true;
+    }
+    this.msg = this.peerService.initiateCall();
+    if(this.msg == ''){
+      this.isLive = true;
+      this.peerService.loadLocalStream();
+    }
   }
 }

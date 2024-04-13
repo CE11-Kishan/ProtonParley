@@ -8,16 +8,10 @@
         </div>
     </div>
     <div class="active-user-list">
-        <!-- <ol>
-            <li *ngFor="let user of peerService.activePeers">
-                {{ user }}
-            </li>
-        </ol> -->
-
         <p> {{ msg }} </p>
         
-        <button [innerText]="btnText" type="button" (click)="onButtonClick()"></button>
-        <button type="button" (click)="loadLocalStream()">Show My Face</button>
+        <button *ngIf="isLive" type="button" (click)="skipToNextUser()">Skipp</button>
+        <button *ngIf="!isLive" type="button" (click)="goLive()">Go Live</button>
     </div> 
 </main>
 
