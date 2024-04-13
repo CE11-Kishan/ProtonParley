@@ -25,6 +25,7 @@ export class PeerService {
 
     this.webSocketService.subscribeToMessages((data: string[]) => {
       this.activePeers = data;
+      console.log(data);
       if (this.peerId === '') {
         this.peerId = this.activePeers[this.activePeers.length - 1];
         this.initializePeer();
