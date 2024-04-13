@@ -59,7 +59,3 @@ The frontend server will start at `http://localhost:4200`.
 
 7. Open your web browser and navigate to `http://localhost:4200` to access the Proton Parley application.
 
-## Configuration
-
-- The backend server uses HTTPS and requires SSL certificate files (`key.pem` and `crt.pem`) in the `ssl` directory. Make sure to replace these files with valid SSL certificate files for secure communication.
-- You may need to configure CORS settings in the backend if you deploy the application to a different domain.
