@@ -48,10 +48,11 @@ export class PeerService {
   }
 
   public initiateCall(): string {
-    this.activePeers = this.activePeers.filter(peer => peer !== this.peerId);
-    if (this.activePeers.length > 0) {
-      const randomIndex = Math.floor(Math.random() * this.activePeers.length);
-      const peerIdToCall = this.activePeers[randomIndex];
+    const activePeerList = this.activePeers.filter(peer => peer !== this.peerId);
+    console.log(activePeerList);
+    if (this.activePeers.length > 1) {
+      const randomIndex = Math.floor(Math.random() * activePeerList.length);
+      const peerIdToCall = activePeerList[randomIndex];
       const call = this.peer?.call(peerIdToCall, this.stream[0]);
       if (call) {
         this.mediaConnection = call;
