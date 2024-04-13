@@ -1,7 +1,6 @@
 import { ElementRef, Injectable} from '@angular/core';
 import Peer, { MediaConnection } from 'peerjs';
 import { WebSocketService } from './websocket.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class PeerService {
   public peerId: string = '';
   public peer: Peer | undefined;
-  public socketUrl = environment.baseUrl.replace(/https:/g, 'wss:');
+  public socketUrl = 'wss://' + window.location.hostname;
   public activePeers: string[] = [];
   public stream: MediaStream[] = new Array(2);
   public mediaConnection: MediaConnection | undefined;

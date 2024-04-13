@@ -1,6 +1,5 @@
 const express = require('express');
-const https = require('https');
-const fs = require('fs');
+const http = require('http'); // Change from https to http
 const WebSocket = require('ws');
 const { v4: uuidv4 } = require('uuid');
 
@@ -18,11 +17,8 @@ app.use((req, res, next) => {
     next();
 });
 
-
-const server = https.createServer({
-    key: fs.readFileSync('ssl/key.pem'),
-    cert: fs.readFileSync('ssl/crt.pem')
-}, app);
+// Create a regular HTTP server instead of HTTPS server
+const server = http.createServer(app);
 
 const wss = new WebSocket.Server({ server });
 
@@ -59,11 +55,10 @@ function broadcastActiveUsers() {
     });
 }
 
-//Serve angular paths
+// Serve angular paths
 app.all('*', function (req, res) {
     res.status(200).sendFile(`/index.html`, {root: "wwwroot"});
 });
-
 
 // Start the server
 const PORT = process.env.PORT || 3000;
