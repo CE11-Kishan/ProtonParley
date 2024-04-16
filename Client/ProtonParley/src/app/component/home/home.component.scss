@@ -1,79 +1,30 @@
 main {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: 93vh;
+    overflow-y: scroll;
+    position: relative;
 
-    .visuals{
-        width: 60%;
-        height: 100%;
+    .content{
         display: flex;
-        flex-direction: column;
-    
-        .peer {
-            background-color: #F9F07A;
-        }
-    
-        .user {
-            background-color: #FF8080;
-        }
-
-        .peer , .user {
-            height: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            video {
-                width: 90%;
-                height: 90%;
-                border: 4px solid black;
-                object-fit: cover;
-                border-radius: 7px;
-            }
-        }
-    }
-    .active-user-list {
-        width: 40%;
+        width: 100%;
         height: 100%;
-        background-color: #74E291;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: column;
-
-        button{
-            width: 200px;
-            height: 60px;
-            font-size: 35px;
-            background-color: #9195F6;
-            border: 2px solid black;
-            color: black;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease; /* Transition effect for hover */
-        }
-        
-        button:hover {
-            background-color: #0056b3; /* Darker blue color on hover */
-        }
-        
-        /* Clicking effect */
-        button:active {
-            transform: scale(0.9); /* Apply scale transform when button is clicked */
-        }
-        
-    }
-}
-
-@media screen and (max-width: 768px) {
-    main {
-        flex-direction: column;
 
         .visuals{
-            width: 100%;
-            height: 80%;
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        
+            .peer {
+                background-color: #F9F07A;
+            }
+        
+            .user {
+                background-color: #FF8080;
+            }
+    
             .peer , .user {
                 height: 50%;
                 width: 100%;
@@ -83,14 +34,74 @@ main {
                 video {
                     width: 90%;
                     height: 90%;
+                    border: 4px solid black;
+                    object-fit: cover;
+                    border-radius: 7px;
                 }
             }
         }
-
-        .active-user-list{
-            width: 100%;
-            height: 20%;
+        .active-user-list {
+            width: 40%;
+            height: 100%;
+            background-color: #74E291;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+    
+            button{
+                width: 200px;
+                height: 60px;
+                font-size: 35px;
+                background-color: #9195F6;
+                border: 2px solid black;
+                color: black;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s ease; /* Transition effect for hover */
+            }
+            
+            button:hover {
+                background-color: #0056b3; /* Darker blue color on hover */
+            }
+            
+            /* Clicking effect */
+            button:active {
+                transform: scale(0.9); /* Apply scale transform when button is clicked */
+            }
+            
         }
+    }
+}
 
+@media screen and (max-width: 768px) {
+    main {
+        .content{
+            flex-direction: column;
+
+            .visuals{
+                width: 100%;
+                height: 80%;
+                .peer , .user {
+                    height: 50%;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    video {
+                        width: 90%;
+                        height: 90%;
+                    }
+                }
+            }
+    
+            .active-user-list{
+                width: 100%;
+                height: 20%;
+            }
+    
+        }
     }
 }

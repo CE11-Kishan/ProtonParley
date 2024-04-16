@@ -1,19 +1,20 @@
-<main>
-    <div class="visuals">
-        <div class="peer">
-            <video #remoteVideo autoplay> </video>
+    <main>
+    <div class="content">
+        <div class="visuals">
+            <div class="peer">
+                <video #remoteVideo autoplay> </video>
+            </div>
+            <div class="user">
+                <video #localVideo autoplay></video>
+            </div>
         </div>
-        <div class="user">
-            <video #localVideo autoplay></video>
-        </div>
+        <div class="active-user-list">
+            <p> {{ msg }} </p>
+            
+            <button *ngIf="isLive" type="button" (click)="skipToNextUser()">Skipp</button>
+            <button *ngIf="!isLive" type="button" (click)="goLive()">Go Live</button>
+        </div> 
     </div>
-    <div class="active-user-list">
-        <p> {{ msg }} </p>
-        
-        <button *ngIf="isLive" type="button" (click)="skipToNextUser()">Skipp</button>
-        <button *ngIf="!isLive" type="button" (click)="goLive()">Go Live</button>
-    </div> 
 </main>
 
-<!-- <app-bottom-navigation></app-bottom-navigation> -->
 
